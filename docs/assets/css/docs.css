@@ -31,7 +31,7 @@ body > .navbar {
 }
 
 /* Change the docs' brand */
-body > .navbar .brand {
+/*body > .navbar .brand {
   padding-right: 0;
   padding-left: 0;
   margin-left: 20px;
@@ -46,8 +46,7 @@ body > .navbar .brand {
 body > .navbar .brand:hover {
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
-}
-
+}*/
 
 /* Sections
 -------------------------------------------------- */
@@ -88,6 +87,7 @@ hr.soften {
 /* Base class
 ------------------------- */
 .jumbotron {
+  display: none;
   position: relative;
   padding: 40px 0;
   color: #fff;
