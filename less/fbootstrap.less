@@ -1,0 +1,808 @@
+// Customization based on: http://ckrack.github.com/fbootstrapp/
+// Prasad
+
+// Customization based on: http://ckrack.github.com/fbootstrapp/
+// Prasad
+
+@import "fbootstrap-mixins.less";
+
+// form borders
+@form-border-radius:  0px;
+@btn-border-radius:   0px;
+@form-border-color:   @blue-light;
+
+// alert/block-alert borders
+@alert-border-radius: 0px;
+
+// pills/tabs borders
+@pills-border-radius: 15px;
+@tabs-border-radius:  2px;
+
+// mixins.less
+#font {
+.facebook(@weight: normal, @size: 11px, @line-height: 14px) {
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @line-height;
+  }
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+.formFieldState(@a, @b, @c) {}
+@grid-column-width: 70px;
+
+@alertBorderRadius: 0;
+
+// scaffolding.less
+body {
+	#font > .facebook(normal,@base-font-size,@base-line-height);
+}
+
+// tables.less
+.table-striped {
+	tbody {
+		tr:hover td,
+		tr:hover th {
+			background-color: @gray-white;
+		}		
+	}
+}
+
+// type.less
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+
+  small {
+    &.block {
+        display: block;
+    }
+  }
+  &.tab {
+    border-bottom: 1px solid @gray-lighter;
+    border-top: 1px solid @gray-lighter;
+    margin-bottom: 8px;
+    padding: 3px 6px;
+    background: @gray-white;
+    font-weight: bold;
+    a {
+        font-weight: normal;
+        color: @blue;
+    }
+  }
+}
+
+h1 {
+  margin-bottom: @base-line-height;
+  font-size: 24px;
+  line-height: @base-line-height * 2;
+  small {
+    font-size: 16px;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  letter-spacing: -0.03em;
+  line-height: @base-line-height * 2;
+  small {
+    font-size: 14px;
+  }
+}
+
+h3, h4, h5, h6 {
+  line-height: @base-line-height * 2;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: bold;
+  small {
+    font-size: 13px;
+  }
+}
+
+h4 {
+  font-size: 15px;
+  small {
+    font-size: 12px;
+  }
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 13px;
+  color: @gray-light;
+  text-transform: uppercase;
+}
+
+code {
+  color: @green;
+  font-size: 10px;
+}
+
+pre {
+  background-color: @gray-white;
+  font-size: 12px;
+}
+
+// forms.less
+label,
+input,
+select,
+button,
+textarea {
+  #font > .facebook();
+}
+
+label {
+	font-weight: bold;
+	color: @gray;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	border: 1px solid @form-border-color;
+  .border-radius(@form-border-radius);
+}
+
+input[type="radio"], 
+input[type="checkbox"] {
+  margin: 3px 0 0 0;
+}
+
+select {
+	padding: 2px;
+}
+
+form .clearfix.error {
+  .formFieldState(@red, @red, @red-light);
+}
+
+// Warning
+form .clearfix.warning {
+  .formFieldState(@yellow, @yellow, @yellow-light);
+}
+// Success
+form .clearfix.success {
+  .formFieldState(@green, @green, @green);
+}
+
+// Grid style input sizes
+// This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
+.formColumns(@column-span: 1) {
+  display: inline-block;
+  float: none;
+  width: ((@grid-column-width) * @column-span) + (@grid-gutter-width * (@column-span - 1)) - 10;
+  margin-left: 0;
+}
+
+input,
+textarea {
+  // Default columns
+  &.span1     { .formColumns(1); }
+  &.span2     { .formColumns(2); }
+  &.span3     { .formColumns(3); }
+  &.span4     { .formColumns(4); }
+  &.span5     { .formColumns(5); }
+  &.span6     { .formColumns(6); }
+  &.span7     { .formColumns(7); }
+  &.span8     { .formColumns(8); }
+  &.span9     { .formColumns(9); }
+  &.span10    { .formColumns(10); }
+  &.span11    { .formColumns(11); }
+  &.span12    { .formColumns(12); }
+  &.span13    { .formColumns(13); }
+  &.span14    { .formColumns(14); }
+  &.span15    { .formColumns(15); }
+  &.span16    { .formColumns(16); }
+}
+
+// Form element sizes
+// TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
+.input-mini,
+input.mini,
+textarea.mini,
+select.mini {
+ .formColumns(1);
+}
+.input-small,
+input.small,
+textarea.small,
+select.small {
+  .formColumns(2);
+}
+.input-medium,
+input.medium,
+textarea.medium,
+select.medium {
+  .formColumns(3);
+}
+.input-large,
+input.large,
+textarea.large,
+select.large {
+  .formColumns(4);
+}
+.input-xlarge,
+input.xlarge,
+textarea.xlarge,
+select.xlarge {
+  .formColumns(6);
+}
+.input-xxlarge,
+input.xxlarge,
+textarea.xxlarge,
+select.xxlarge {
+  .formColumns(8);
+}
+
+// Disabled and read-only inputs
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  background-color: @gray-white;
+ }
+
+ // Actions (the buttons)
+.actions {
+  background: @gray-white;
+  .border-radius(0 0 @form-border-radius @form-border-radius);
+}
+
+// Allow us to put symbols and text within the input field for a cleaner look
+.input-prepend,
+.input-append {
+  input {
+    .border-radius(0 @form-border-radius @form-border-radius 0);
+  }
+  .add-on {
+    background: @gray-white;
+    border: 1px solid @form-border-color;
+    height: @base-line-height;
+    .border-radius(@form-border-radius 0 0 @form-border-radius);
+  }
+  .btn {
+    margin-left: auto;  
+    &:last-child, &:first-child {
+      .border-radius(0);
+    }  
+  }
+  .btn-group {
+    &:first-child > .dropdown-toggle,
+    &:last-child > .dropdown-toggle {
+      .border-radius(0);
+    }
+  }
+}
+
+.input-prepend.input-append {
+  .btn {
+    &:first-child, &:last-child {
+      margin-right: auto;
+    }
+  }
+  input + .btn-group, select + .btn-group {
+    .btn {
+      .border-radius(0);
+    }
+  }
+}
+
+// Stacked options for forms (radio buttons or checkboxes)
+label.checkbox, label.radio {
+  font-weight: normal;
+}
+.controls {
+	label {
+		line-height: @base-line-height+4;
+		font-weight: normal;
+		strong {
+	      color: @gray-dark;
+	    }
+	}
+}
+
+// patterns.less
+.nav {
+  margin: 4px 10px 0 0;
+  > li > a {
+    font-size: @base-font-size;
+    padding: 6px 10px 11px;
+    &:hover {
+      color: @white;
+      text-shadow: none;
+      background-color: @blue !important;
+    }
+  }
+  .active > a {
+    background-color: @blue !important;
+  }
+
+  li.open .dropdown-menu {
+    background: @blue-dark;
+  }
+
+  .dropdown-toggle {
+    .caret {
+      margin-top: 0;
+      &:hover {
+        color: @white;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    background-color: @blue-dark;
+    .dropdown-toggle {
+      &.open {
+        background: @blue;
+      }
+    }
+    li a {
+      color: @white;
+      text-shadow: none;      
+    }
+    .divider {
+      background-color: @blue-dark;
+      border-color: @blue;
+    }
+  }
+} 
+
+.navbar, .navbar-inverse, .navbar-default {
+   min-height: 38px;
+
+  .nav {
+    > li {
+      > a {
+        color: @white;
+        text-shadow: none;
+        &:hover {
+          color: @white;
+        }
+      }      
+    }
+
+    .divider-vertical {
+      border-color: @blue-dark;
+    }
+
+    > .active {
+      > a {
+        color: @white;
+      }
+    }
+
+    .dropdown-menu,
+    > li > .dropdown-menu {
+      border-color: @blue;
+      border-top-width: 0px;
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    li.dropdown,
+    &.dropdown {
+      .dropdown-toggle,
+      .dropdown-toggle:hover {
+        .caret {
+          border-top-color: @white;
+          border-bottom-color: @white;
+          margin-top: 2px;
+        }
+      }
+      &.open {
+        > .dropdown-toggle {
+          background: @blue-dark;
+          color: @white;
+        }        
+      }
+    }
+  }
+
+  .navbar-inner {
+    background: @blue-dark;
+  }
+
+  .navbar-brand {
+    color: @white;
+    padding: 10px 20px 12px;
+    margin: 0 0 0 -20px;
+    line-height: 1;
+    text-shadow: none;
+    height: 38px;
+
+    &:hover {
+      background-color: @blue;
+    }
+  }
+  p {
+    line-height: 38px;
+  }
+}
+
+.navbar-inverse {
+   .navbar-search {
+    .search-query {
+      background: @gray-lighter;
+    }
+  }
+}
+
+.navbar-default {
+  background: @blue-dark;
+}
+
+.nav-header {
+  text-shadow: none;
+}
+
+.navbar-form, .navbar-btn {
+	margin-top: 3px;
+	margin-bottom: 2px;
+}
+
+.navbar-text {
+	margin: 0;
+	color: @white;
+}
+
+.dropdown-menu {
+  border-width: 1px 1px 1px;
+  margin-top: 0;
+
+  li > a {
+    line-height: 19px;
+    color: @blue;
+    &:hover,
+    &.hover {
+      background-color: @blue;
+      background-image: none;
+      color: @white;
+    }
+  }
+}
+
+.nav-tabs {
+  > li {
+    > a {
+      line-height: (@base-line-height * 1.5);
+      .border-radius(@tabs-border-radius @tabs-border-radius 0 0);
+    }
+  }
+  .active > a {
+    background-color: @white !important;
+    color: @blue;
+    &:hover {
+      color: @white;
+    }
+  }  
+}
+
+.nav-stacked {
+  .active > a {
+    background-color: @blue !important;
+    color: @white;
+    &:hover {
+      color: @white;
+    }
+  } 
+}
+
+.nav-pills {
+  a {
+    margin: 3px 3px 3px 0;
+    padding: 0 10px;    
+  }
+  > li {
+    > a {
+      line-height: (@base-line-height * 1.5);
+      .border-radius(@pills-border-radius);
+    }
+  }
+  .active > a {
+    color: @white;
+  }
+}
+
+.nav-tabs, .nav-pills {
+  > li {
+    > a {
+      padding: 0 15px;      
+    }
+  }
+  li.open .dropdown-menu {
+    background: @white;
+    li a {
+      color: @blue;
+      &:hover {
+        color: @white;
+      }
+    }
+    .divider {
+      background-color: #e5e5e5;
+      border-color: #e5e5e5;
+    }
+  }
+}
+
+.nav-list {
+  > li > a,
+  .nav-header {
+    margin-left: -15px;
+    margin-right: -26px;
+  }
+  > li > a {
+    padding: 3px 20px;
+  }
+  .nav-header {
+    padding: 0 10px;
+  }
+}
+
+.list-group {
+	.list-group-item.active {
+		background: @blue-dark;
+		color: @white;
+	}
+}
+
+.dropdown.open {
+  .dropdown-toggle {
+    background: @blue;
+  }
+}
+
+.breadcrumb {
+  border: 1px solid #ddd;
+  #gradient > .vertical(#ffffff, @gray-white);
+  .divider {
+    padding: 0 2px;
+  }
+}
+
+.jumbotron {
+  background-color: @gray-white;
+}
+
+
+.btn,
+.alert {
+  // Set text color
+  &-success,
+  &-success:hover,
+  &-danger,
+  &-danger:hover,
+  &-error,
+  &-error:hover,
+  &-info,
+  &-info:hover {
+    color: @gray-dark;
+  }
+  &-default,
+  &-default:hover {
+	  color: @gray;
+  }
+
+  // Sets the close button to the middle of message
+  .close{
+    line-height: @base-line-height;
+  }
+  
+  // Danger and error appear as red
+  &-danger,
+  &-error {
+    .gradientBar(@red-light, @red-light);
+  }
+  // Success (now blue, only for alert-message)
+  &-success {
+    .gradientBar(@blue-lighter, @blue-lighter);
+    border-color: @blue-light;
+  }
+  // Info (now yellow)
+  &-info {
+    .gradientBar(@yellow-light, @yellow-light);
+  }
+}
+
+.btn {
+  padding: 5px 12px 6px;
+  text-shadow: none;
+  font-weight: bold;
+  line-height: @base-line-height;
+  border: 1px solid @gray;
+  border-bottom-color: @gray-light;
+  .border-radius(@btn-border-radius);
+  
+  // Default
+  &-default {
+	  .gradientBar(#fff, #e6e6e6);
+	  color: @gray-darker;
+  }
+
+  // Success (green, only for btn)
+  &-success {
+    .gradientBar(@green-light, @green-light);
+    border-color: @green @green @green-dark;
+  }  
+
+  // danger & error red (only btn)
+  &-danger,
+  &-error {
+    .gradientBar(@red, @red);
+    border-color: darken(@red, 5%) darken(@red, 5%) darken(@red, 20%);
+  }
+  
+  &-success,
+  &-danger,
+  &-error {
+    color: @white;
+    &:hover {
+        color: @white;
+    }
+  }
+
+  &.active,
+  &:active {
+    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+  }
+
+  &-primary {
+    color: @white;
+    .gradientBar(@blue, @blue-dark);
+    &:hover {
+      color: @white;
+      background-color: @blue-dark;
+    }
+  }
+
+  // Success (green, only for btn)
+  &-success {
+    .gradientBar(@green-light, @green-light);
+    border-color: @green @green @green-dark;
+  }
+  // danger & error red (only btn)
+  &-danger,
+  &-error {
+    .gradientBar(@red, @red);
+    border-color: darken(@red, 5%) darken(@red, 5%) darken(@red, 20%);
+  }
+  &-success,
+  &-danger,
+  &-error {
+    color: @white;
+    &:hover {
+        color: @white;
+    }
+  }
+
+  &-disabled {
+    box-shadow: none;
+  }
+  &-lg {
+    font-size: @base-font-size + 2px;
+    .border-radius(@btn-border-radius);
+  }
+  &-sm {
+    padding: 4px 7px 5px 7px;
+  }
+
+  
+}
+
+.alert {
+  color: @gray-dark !important;
+
+  .gradientBar(#f7f7f7, #f7f7f7);
+  text-shadow: none;
+  .border-radius(@alertBorderRadius);
+
+  a {
+    text-shadow: none;
+  }
+  strong {
+    text-shadow: none;
+  }
+  &-danger,
+  &-success,
+  &-info {
+      text-shadow: none;
+  }
+
+  &-block {
+    background-color: #f7f7f7;
+    border-color: #cccccc;
+
+    &-danger {
+      background-color: @red-light;
+      border-color: @red;
+    }
+    &-success {
+      background-color: @blue-lighter;
+      border-color: @blue-light;
+    }
+    &-info {
+      background-color: @yellow-light;
+      border-color: @yellow;
+    }
+  }
+}
+
+.pagination {
+  a:hover, .active a {
+    background-color: @blue-lighter;
+  }
+}
+
+.well {
+  background-color: @gray-white;
+}
+
+.modal-content {
+  .border-radius(0);
+  .box-shadow(0 0 0px 8px rgba(82, 82, 82, 0.7));
+}
+
+@media (min-width: @screen-sm-min) {
+	.modal-content {
+		.border-radius(0);
+		.box-shadow(0 0 0px 8px rgba(82, 82, 82, 0.7));
+	}
+}
+
+.modal-title {
+	font-weight: bold;
+}
+
+.modal-footer {
+  background-color: @gray-white;
+}
+
+
+// TODO port POPOVER and TWIPSY
+
+.label {
+  padding: 1px 3px 1px;
+  font-size: @base-font-size * .75;
+  text-transform: uppercase;
+}
+
+.label, .badge {
+  text-shadow: none;
+  &-imortant  { background-color: @red; }
+  &-danger    { background-color: @red; }
+  &-warning   { background-color: @yellow; }
+  &-success   { background-color: @green; }
+  &-info      { background-color: lighten(@blue, 25%); }
+  &-notice    { background-color: lighten(@blue, 25%); }
+  &-num       { color: @blue-dark; background-color: lighten(@blue, 25%); float: right; }
+}
