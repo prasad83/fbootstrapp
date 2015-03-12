@@ -342,6 +342,7 @@ label.checkbox, label.radio {
   }
   .active > a {
     background-color: @blue !important;
+    color: @white;
   }
 
   li.open .dropdown-menu {
@@ -386,6 +387,9 @@ label.checkbox, label.radio {
         &:hover {
           color: @white;
         }
+        &:focus {
+	      color: @white;
+        }
       }      
     }
 
@@ -396,6 +400,12 @@ label.checkbox, label.radio {
     > .active {
       > a {
         color: @white;
+        &:hover {
+          color: @white;
+        }
+        &:focus {
+	      color: @white;
+        }
       }
     }
 
@@ -779,12 +789,22 @@ label.checkbox, label.radio {
 	}
 }
 
+.modal-header {
+	padding: 9px 15px;
+}
+
+.modal-body {
+	padding: 15px;
+}
+
 .modal-title {
 	font-weight: bold;
+	margin-top: 0;
 }
 
 .modal-footer {
   background-color: @gray-white;
+  padding: 14px 15px 15px
 }
 
 
